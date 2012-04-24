@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
     if @or.set_cc_from_stripe_customer_token(params[:order][:customer_token])
       redirect_to @or,
       :notice => "Thank you for placing an order." if @or.charge(current_cart)
+      OrderMailer.order_confirmation(@or).deliver
     else
       render :new
     end

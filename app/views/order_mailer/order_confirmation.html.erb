@@ -1,0 +1,7 @@
+<p>Hi <%= @user.name %>,</p>
+<p>You just ordered:</p>
+<% @products.each do |product| %>
+<p><%= product.name %></p>
+<% end %>
+<p>Thanks!<br>
+Ed</p>
