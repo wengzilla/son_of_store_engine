@@ -7,6 +7,8 @@ StoreEngine::Application.routes.draw do
   resources :users, only: [:show, :create, :new, :update]
   resources :stores, :only => [:index, :create, :new]
 
+  match '/profile', :to => "stores#index"
+
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
@@ -26,6 +28,7 @@ StoreEngine::Application.routes.draw do
 
     resources :categories , only: [:show]
     resources :orders, only: [:index, :new, :show, :create]
+    resources :guest_orders, only: [:index, :new, :show, :create]
     resources :credit_cards, only: [:new, :create, :index]
     resources :shipping_details, only: [:new, :create, :index]
     resources :calls, only: [:new, :create, :index]
