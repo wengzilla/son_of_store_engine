@@ -25,7 +25,7 @@ class Seeder
       store.save
     end
 
-    Store.create(:name => "Testberry", :slug => "testberry",
+    @store = Store.create(:name => "Testberry", :slug => "testberry",
                  :description => "The berriest test of them all!")
   end
 
@@ -112,6 +112,7 @@ class Seeder
       email: 'demo08+chad@jumpstartlab.com', password: 'hungry')
     admin.update_attribute(:admin, true)
     admin.update_attribute(:site_admin, true)
+    @store.users << User.first
   end
 
   def self.destroy_db
